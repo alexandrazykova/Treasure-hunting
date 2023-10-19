@@ -19,20 +19,44 @@ db.once('open', async () => {
 
     const products = await Product.insertMany([
       {
-        name: 'Tin of Cookies',
+        name: 'Summer Dress',
         description:
-          'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-        image: 'cookie-tin.jpg',
-        category: categories[0]._id,
-        price: 2.99,
-        quantity: 500
+          'Light and comfy summer dress with short sleeves, flower pattern and cotton fabric. Diffrent sizes and colour available',
+        image: '',
+        category: categories[3]._id,
+        price: 40
       },
       {
-        name: 'Canned Coffee',
+        name: 'Custom Cotton Kitchen Towels',
         description:
-          'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-        image: 'canned-coffee.jpg',
+          'Available in all colours and sizes. You can message me for special requests',
+        image: '',
         category: categories[0]._id,
-        price: 1.99,
-        quantity: 500
+        price: 19
       },
+      {
+        name: 'Earrings',
+        description:
+          'Handmade hoops for any occasion. 2-6 inch. Titanium gold/silver. Custom designs also possible',
+        image: '',
+        category: categories[1]._id,
+        price: 26
+      },
+      {
+        name: 'Teddy Bear',
+        description:
+          'Handmade plush toy. Available in 10cm or 20cm sizes. Colours - white or brown. For custom requests please DM',
+        image: '',
+        category: categories[4]._id,
+        price: 15
+      },
+      {
+        name: 'Portraits',
+        description:
+          'Actor/singer/your loved once. Great idea for a gift. Price and time depending on the size. Please message me for more details',
+        image: '',
+        category: categories[2]._id,
+        price: 72
+      }
+    ]);
+    
