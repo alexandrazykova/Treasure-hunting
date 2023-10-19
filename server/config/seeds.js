@@ -59,4 +59,47 @@ db.once('open', async () => {
         price: 72
       }
     ]);
+
+    console.log('products seeded');
+
+    await User.create({
+        firstName: 'Sarah',
+        lastName: 'Naveed',
+        email: 'sarah@testmail.com',
+        password: 'password12345',
+        orders: [
+          {
+            products: [products[0]._id, products[0]._id, products[1]._id]
+          }
+        ]
+      });
+    
+      await User.create({
+        firstName: 'Ariana',
+        lastName: 'Vinamagua',
+        email: 'ariana@testmail.com',
+        password: 'password12345',
+        orders: [
+            {
+              products: [products[1]._id, products[2]._id, products[3]._id]
+            }
+          ]
+      });
+
+      await User.create({
+        firstName: 'Alexandra',
+        lastName: 'Zykova',
+        email: 'alexandra@testmail.com',
+        password: 'password12345',
+        orders: [
+            {
+              products: [products[4]._id]
+            }
+          ]
+      });
+    
+      console.log('users seeded');
+    
+      process.exit();
+    });
     
