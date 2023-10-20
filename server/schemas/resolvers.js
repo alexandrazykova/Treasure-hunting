@@ -31,7 +31,7 @@ const resolvers = {
     },
     
     // Resolver to fetch user data with id
-    user: async (parent, args, context) => {
+    users: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'orders.products',
