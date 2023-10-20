@@ -26,15 +26,9 @@ const userSchema = new Schema({
     minlength: 5
   },
 
-  products: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Product'
-    }
-  ] 
-});
 
-//orders: [Order.schema]
+orders: [Order.schema],
+});
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
