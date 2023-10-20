@@ -3,10 +3,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
 import Home from './pages/Home';
+import Detail from './pages/Detail';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ErrorPage from './pages/Error';
+// import OrderHistory from './pages/OrderHistory'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,9 @@ const router = createBrowserRouter([
       }, {
         path: '/profiles/:profileId',
         element: <Profile />
+      },{
+        path: '/products/:id',
+        element: <Detail />
       }
     ]
   },
