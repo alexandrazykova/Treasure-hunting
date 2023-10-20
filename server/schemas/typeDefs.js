@@ -19,8 +19,14 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
+    orders: [Order]
   }
-
+  
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
   type Checkout {
     session: ID
   }
@@ -41,8 +47,8 @@ const typeDefs = `
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
-    user: User
-
+    users: [User]
+    order(_id: ID!): Order
     checkout(products: [ProductInput]): Checkout
   }
 
