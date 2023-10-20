@@ -19,6 +19,8 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
+    password: String
+    products: [Product]
   }
 
   type Checkout {
