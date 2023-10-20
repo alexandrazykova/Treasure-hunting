@@ -19,12 +19,16 @@ const typeDefs = `
     firstName: String
     lastName: String
     email: String
+<<<<<<< HEAD
     orders: [Order]
   }
   
   type Order {
     _id: ID
     purchaseDate: String
+=======
+    password: String
+>>>>>>> main
     products: [Product]
   }
   type Checkout {

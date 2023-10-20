@@ -8,7 +8,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ErrorPage from './pages/Error';
-// import OrderHistory from './pages/OrderHistory'
+import OrderHistory from './pages/OrderHistory'
 
 const router = createBrowserRouter([
   {
@@ -31,6 +31,9 @@ const router = createBrowserRouter([
       },{
         path: '/products/:id',
         element: <Detail />
+      },{
+        path: '/products/:id',
+        element: <OrderHistory />
       }
     ]
   },
