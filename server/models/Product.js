@@ -23,6 +23,11 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category',
     required: true
+  },
+  comment: {
+    type: Schema.Types.ObjectId,
+    ref: 'Comment',
+    required: false
   }
 });
 
