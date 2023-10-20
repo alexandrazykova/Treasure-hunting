@@ -26,6 +26,7 @@ dist-ssr
 *.sw?
 
 # dependencies
+/node_modules
 /.pnp
 .pnp.js
 
