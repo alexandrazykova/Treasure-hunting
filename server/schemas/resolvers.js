@@ -158,6 +158,18 @@ const resolvers = {
 //     }
 //     throw AuthenticationError;
 // },
+// removeProduct: async (parent, { productId }, context) => {
+//   if (context.user) {
+//       const updatedUser = await User.findOneAndUpdate(
+//           { _id: context.user._id },
+//           { $pull: { savedProducts: { productId } } },
+//           { new: true }
+//       );
+
+//       return updatedUser;
+//   }
+//   throw AuthenticationError;
+// }
 };
 
 module.exports = resolvers;
