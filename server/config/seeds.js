@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Product, Comment, Category } = require('../models');
+const { User, Product, Comment, Category,Profile } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
@@ -7,6 +7,7 @@ db.once('open', async () => {
     await cleanDB('Product', 'products');
     await cleanDB('User', 'users');
     await cleanDB('Comment', 'comments');
+
 
     const categories = await Category.insertMany([
         { name: 'Household' },
