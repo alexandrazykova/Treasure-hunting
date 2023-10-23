@@ -60,7 +60,7 @@ export const ADD_ORDER = gql`
     }
   }
 `;
-
+// using for saving product to the favourite list
 export const SAVE_PRODUCT = gql`
   mutation saveProduct($productBody:SearchInput) {
     saveProduct (productBody:$productBody){
@@ -90,3 +90,22 @@ export const ADD_PRODUCT = gql`
     }
   }
 `;
+// using to remove product from the favourite list
+export const REMOVE_PRODUCT = gql`
+  mutation removeProduct($productId:ID!) {
+    removeProduct (productId:$productId){
+      _id
+      email
+      productCount
+      savedProducts {
+        productId
+        name
+        description
+        image
+        price
+        category
+      }
+    }
+  }
+`;
+
