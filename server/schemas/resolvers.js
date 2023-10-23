@@ -138,27 +138,7 @@ const resolvers = {
 
       return { token, user };
     },
-   
-addProduct: async (_, { profileId, productInput }) => {
-  try {
-    const product = new Product({
-      ...productInput,
-      profile: profileId,
-    });
-
-    const savedProduct = await product.save();
-
-    await Profile.findByIdAndUpdate(
-      profileId,
-      { $push: { products: savedProduct._id } },
-      { new: true }
-    );
-
-    return savedProduct;
-  } catch (error) {
-    throw new Error('Could not add the product: ' + error.message);
-  }
-},
-}};
+  },
+};
 
 module.exports = resolvers;

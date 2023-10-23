@@ -49,6 +49,12 @@ const typeDefs = `
     price: Float
   }
 
+  input SearchInput {
+    _id: ID
+    name: String
+    description: String
+  }
+
   type Query {
     categories: [Category]
     products(category: ID, name: String): [Product]
@@ -62,7 +68,7 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    saveProduct(productBody: ProductInput!): User
+    saveProduct(productBody: SearchInput): User
     login(email: String!, password: String!): Auth
     addProduct(profileId: ID!, productInput: ProductInput): Product
   }

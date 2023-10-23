@@ -62,7 +62,7 @@ export const ADD_ORDER = gql`
 `;
 
 export const SAVE_PRODUCT = gql`
-  mutation saveProduct($productBody:ProductInput!) {
+  mutation saveProduct($productBody:SearchInput) {
     saveProduct (productBody:$productBody){
       _id
       email
