@@ -1,0 +1,17 @@
+export const getSavedProductIds = () => {
+    const savedProductIds = localStorage.getItem('saved_products')
+      ? JSON.parse(localStorage.getItem('saved_products'))
+      : [];
+  
+    return savedProductIds;
+  };
+  
+  export const saveProductds = (productIdArr) => {
+    if (productIdArr.length) {
+      localStorage.setItem('saved_products', JSON.stringify(productIdArr));
+    } else {
+      localStorage.removeItem('saved_products');
+    }
+  };
+  
+  
