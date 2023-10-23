@@ -9,33 +9,33 @@ import {
 import { useQuery, useMutation } from '@apollo/client';
 
 // import { REMOVE_BOOK } from '../utils/mutations';
-import { GET_ME } from '../utils/queries';
-import { removeBookId } from '../utils/localStorage';
+// import { GET_ME } from '../utils/queries';
+// import { removeBookId } from '../utils/localStorage';
 
 const SavedProducts = () => {
   const [setUserData] = useState({});
-  const { loading, data } = useQuery(GET_ME);
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const { loading, data } = useQuery();
+  const [removeBook] = useMutation();
   console.log(data)
 
- const handleDeleteBook = async (bookId) => {
-  try {
-    const { data: updatedUser } = await removeBook({
-      variables: { bookId }
-    });
+//  const handleDeleteBook = async (bookId) => {
+//   try {
+//     const { data: updatedUser } = await removeBook({
+//       variables: { bookId }
+//     });
 
-    setUserData(updatedUser);
+//     setUserData(updatedUser);
 
-    removeBookId(bookId);
-  } catch (err) {
-    console.error(err);
-  }
-};
+//     removeBookId(bookId);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
 
-  // if data isn't here yet, say so
-  if (loading) {
-    return <h2>LOADING...</h2>;
-  }
+//   // if data isn't here yet, say so
+//   if (loading) {
+//     return <h2>LOADING...</h2>;
+//   }
 
   return (
     <>

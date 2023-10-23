@@ -11,10 +11,10 @@ import {
   } from 'react-bootstrap';
 
 import Auth from '../../utils/auth';
-import { saveProductIds, getSavedProductIds } from '../utils/localStorage';
+import { saveProductIds, getSavedProductIds } from '../../utils/localStorage';
 
 import { useMutation } from '@apollo/client';
-import { SAVE_PRODUCT } from '../utils/mutations';
+import { SAVE_PRODUCT } from '../../utils/mutations';
 
 const SearchProducts = () => {
 
