@@ -166,8 +166,8 @@ const resolvers = {
 //           { new: true }
 //       );
 
-//       return updatedUser;
-//   }
+  //     return updatedUser;
+  // }
 //   throw AuthenticationError;
 // }
 };
