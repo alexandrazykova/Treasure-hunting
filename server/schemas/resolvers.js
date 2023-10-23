@@ -146,18 +146,18 @@ const resolvers = {
       return { token, user };
     },
   },
-  saveProduct: async (parent, { productBody }, context) => {
-    if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $push: { savedProducts: productBody } },
-            { new: true, runValidators: true }
-        );
+//   saveProduct: async (parent, { productBody }, context) => {
+//     if (context.user) {
+//         const updatedUser = await User.findOneAndUpdate(
+//             { _id: context.user._id },
+//             { $push: { savedProducts: productBody } },
+//             { new: true, runValidators: true }
+//         );
 
-        return updatedUser;
-    }
-    throw AuthenticationError;
-},
+//         return updatedUser;
+//     }
+//     throw AuthenticationError;
+// },
 };
 
 module.exports = resolvers;

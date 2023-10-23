@@ -46,9 +46,9 @@ const typeDefs = `
   }
 
   input SearchInput {
+    _id: ID
     name: String
     description: String
-    category: String
   }
 
   type Query {
