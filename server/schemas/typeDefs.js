@@ -20,6 +20,7 @@ const typeDefs = `
     lastName: String
     email: String
     orders: [Order]
+    productCount: Int
   }
   
   type Order {

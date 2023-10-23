@@ -60,3 +60,19 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+
+export const SAVE_PRODUCT = gql`
+  mutation saveProduct($productBody:ProductInput!) {
+    saveProduct (productBody:$productBody){
+      _id
+      email
+      itemCount
+      savedItems {
+        itemId
+        description
+        title
+        image
+      }
+    }
+  }
+`;
