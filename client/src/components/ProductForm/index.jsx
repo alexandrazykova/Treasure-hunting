@@ -4,7 +4,7 @@ import {ADD_PRODUCT} from './mutations';
 
 const ProductForm =({profileId}) =>{
 
-    const [productInput, setProductInput] =useState({
+    const [sellerProductInput, setsellerProductInput] =useState({
         name: '',
         price: '',
         description: '',
@@ -14,18 +14,18 @@ const ProductForm =({profileId}) =>{
  // Handle changes in the form input fields
  const handleChange = (e) => {
     const { name, value } = e.target;
-    // Update the productInput state with the new values
-    setProductInput({ ...productInput, [name]: value });
+    // Update the sellerProductInput state with the new values
+    setsellerProductInput({ ...sellerProductInput, [name]: value });
   };
 
   const handleSubmit = (e) => {
  e.preventDefault();
   //call the addProduct mutation with the provided variable
   addProduct({
-    variables: { profileId, productInput },
+    variables: { profileId, sellerProductInput },
   });
   // Reset the form fields after submission
-  setProductInput({
+  setsellerProductInput({
     name: '',
     price: '',
     description: '',
@@ -40,7 +40,7 @@ return (
         type="text"
         name="name"
         placeholder="Product Name"
-        value={productInput.name}
+        value={sellerProductInput.name}
         onChange={handleChange}
       />
     </div>
@@ -49,7 +49,7 @@ return (
         type="number"
         name="price"
         placeholder="Price"
-        value={productInput.price}
+        value={sellerProductInput.price}
         onChange={handleChange}
       />
     </div>
@@ -58,7 +58,7 @@ return (
         type="text"
         name="description"
         placeholder="Description"
-        value={productInput.description}
+        value={sellerProductInput.description}
         onChange={handleChange}
       />
     </div>
@@ -67,7 +67,7 @@ return (
         type="text"
         name="imageUrl"
         placeholder="Image URL"
-        value={productInput.imageUrl}
+        value={sellerProductInput.imageUrl}
         onChange={handleChange}
       />
     </div>
