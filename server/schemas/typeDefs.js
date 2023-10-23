@@ -13,6 +13,10 @@ const typeDefs = `
     price: Float
     category: Category
   }
+  type Profile {
+    user(_id: ID!): User
+    name: String
+  }
 
   type User {
     _id: ID
@@ -55,20 +59,24 @@ const typeDefs = `
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
-    users: User
+    user: User
     order(_id: ID!): Order
-    checkout(products: [ProductInput]): Checkout
+    getProfile(_id: ID!): Profile
   }
-
   type Mutation {
+    checkout(products: [ProductInput]): Checkout
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     saveProduct(productBody: SearchInput): User
     removeProduct(productId: ID!): User
     login(email: String!, password: String!): Auth
+    addProduct(profileId: ID!, productInput: ProductInput): Product
   }
 `;
 
 module.exports = typeDefs;
 
+
+ 
+ 
