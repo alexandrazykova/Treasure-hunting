@@ -14,4 +14,17 @@ export const getSavedProductIds = () => {
     }
   };
   
+  export const removeProductId = (productId) => {
+    const savedProductIds = localStorage.getItem('saved_products')
+      ? JSON.parse(localStorage.getItem('saved_products'))
+      : null;
   
+    if (!savedProductIds) {
+      return false;
+    }
+  
+    const updatedSavedProductIds = savedProductIds?.filter((savedProductId) => savedProductId !== productId);
+    localStorage.setItem('saved_products', JSON.stringify(updatedSavedProductIds));
+  
+    return true;
+  };
