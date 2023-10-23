@@ -1,36 +1,40 @@
-// import { useParams } from 'react-router-dom';
-// import { useQuery } from '@apollo/client';
+ import { useParams } from 'react-router-dom';
+ import { useQuery } from '@apollo/client';
 
-// import SkillsList from '../components/SkillsList';
-// import SkillForm from '../components/SkillForm';
+ import { QUERY_SINGLE_PROFILE } from '../utils/queries'; //need to confirm the path
+ import ProductForm from './ProductForm';
+ const Profile = () => {
+  const { profileId } = useParams();
 
-// import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+   const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
+    variables: { profileId: profileId },
+   });
 
-// const Profile = () => {
-//   const { profileId } = useParams();
+  const profile = data?.profile || {};
 
-//   const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-//     variables: { profileId: profileId },
-//   });
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <div>
+      <h2>{profile.name} Products</h2>
+      {profile.products?.length > 0 && (
+        <div>
+          {profile.products.map((product) => (
+            <div key={product._id}>
+              <img src={product.imageUrl} alt={product.name} />
+              <h3>{product.name}</h3>
+              <p>Price: ${product.price}</p>
+              <p>{product.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
+      <div>
+        <ProductForm profileId={profile._id} />
+      </div>
+    </div>
+  );
+};
 
-//   const profile = data?.profile || {};
-
-//   if (loading) {
-//     return <div>Loading...</div>;
-//   }
-//   return (
-//     <div>
-//       <h2 className="card-header">
-//         {profile.name}'s friends have endorsed these skills...
-//       </h2>
-
-//       {profile.skills?.length > 0 && <SkillsList skills={profile.skills} />}
-
-//       <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-//         <SkillForm profileId={profile._id} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Profile;
+export default Profile;
