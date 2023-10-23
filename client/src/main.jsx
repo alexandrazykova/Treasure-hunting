@@ -8,7 +8,8 @@ import Detail from './pages/Detail';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ErrorPage from './pages/Error';
-import OrderHistory from './pages/OrderHistory'
+import OrderHistory from './pages/OrderHistory';
+import SavedProducts from './pages/SavedProducts';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,9 @@ const router = createBrowserRouter([
       },{
         path: '/products/:id',
         element: <OrderHistory />
+      },{
+        path: '/saved',
+        element: <SavedProducts />
       }
     ]
   },
