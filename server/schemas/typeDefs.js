@@ -47,6 +47,8 @@ const typeDefs = `
 
   input SearchInput {
     name: String
+    description: String
+    category: String
   }
 
   type Query {
@@ -62,7 +64,7 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    saveProduct(productBody: SearchInput!): User
+    saveProduct(productBody: SearchInput): User
     login(email: String!, password: String!): Auth
   }
 `;
