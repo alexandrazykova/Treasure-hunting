@@ -66,8 +66,8 @@ export const SAVE_PRODUCT = gql`
     saveProduct (productBody:$productBody){
       _id
       email
-      itemCount
-      savedItems {
+      productCount
+      savedProducts {
         itemId
         description
         title

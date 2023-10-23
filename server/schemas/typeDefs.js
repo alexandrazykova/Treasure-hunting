@@ -21,6 +21,7 @@ const typeDefs = `
     email: String
     orders: [Order]
     productCount: Int
+    savedProducts: [Product]
   }
   
   type Order {
