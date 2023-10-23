@@ -20,6 +20,8 @@ const typeDefs = `
     lastName: String
     email: String
     orders: [Order]
+    productCount: Int
+    savedProducts: [Product]
   }
   
   type Order {
@@ -56,7 +58,7 @@ const typeDefs = `
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-
+    saveProduct(productBody: ProductInput!): User
     login(email: String!, password: String!): Auth
   }
 `;
