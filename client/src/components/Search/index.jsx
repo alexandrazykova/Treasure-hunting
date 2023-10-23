@@ -2,22 +2,22 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
 import Auth from '../utils/auth';
-import { saveItemIds, getSavedItemIds } from '../utils/localStorage';
+import { saveProductIds, getSavedProductIds } from '../utils/localStorage';
 
 import { useMutation } from '@apollo/client';
-import { SAVE_ITEM } from '../utils/mutations';
+import { SAVE_PRODUCT } from '../utils/mutations';
 
-const SearchItems = () => {
+const SearchProducts = () => {
 
-    const [searchedItems, setSearchedItems] = useState([]);
+    const [searchedProducts, setSearchedProducts] = useState([]);
     const [searchInput, setSearchInput] = useState('');
   
     // create state to hold saved ItemId values
-    const [savedItemIds, setSavedItemIds] = useState(getSavedItemIds());
+    const [savedProductIds, setSavedProductIds] = useState(getSavedProductIds());
   
-    const [saveItem] = useMutation(SAVE_ITEM);
+    const [saveProduct] = useMutation(SAVE_PRODUCT);
 }
 
 return ();
 
-export default SearchItems;
+export default SearchProducts;
