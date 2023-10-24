@@ -20,11 +20,11 @@ const resolvers = {
           $regex: name,
         };
       }
-      return await Product.find(params).populate('category');
+      return await Product.find(params).populate('category').populate("comment");
     },
     // Resolver to search for product with id
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Product.findById(_id).populate('category').populate('comment');
     },
     users:async ()=>{
       return await User.find();
