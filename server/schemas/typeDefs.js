@@ -50,7 +50,7 @@ const typeDefs = `
   }
 
   input SearchInput {
-    _id
+    _id: ID
     name: String
     description: String
   }
