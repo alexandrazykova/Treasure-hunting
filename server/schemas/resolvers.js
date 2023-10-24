@@ -138,8 +138,9 @@ const resolvers = {
 
       return { token, user };
     },
-  },
-//   saveProduct: async (parent, { productBody }, context) => {
+  
+
+  //   saveProduct: async (parent, { productBody }, context) => {
 //     if (context.user) {
 //         const updatedUser = await User.findOneAndUpdate(
 //             { _id: context.user._id },
@@ -163,6 +164,46 @@ const resolvers = {
   // }
 //   throw AuthenticationError;
 // }
-};
+//},
 
+addProduct: async (_, { profileId, ProductInput }) => {
+  try {
+    const product = new Product({
+      ...ProductInput,
+      profile: profileId,
+    });
+
+    const savedProduct = await product.save();
+
+    await Profile.findByIdAndUpdate(
+      profileId,
+      { $push: { products: savedProduct._id } },
+      { new: true }
+    );
+
+    return savedProduct;
+  } catch (error) {
+    throw new Error('Could not add the product: ' + error.message)
+  }
+}
+  
+},
+};
 module.exports = resolvers;
+
+// addImage: async (_, { productID, imageUrl }, { Product, Image }) => {
+//   try {
+//     const image = new Image({ imageUrl });
+//     await image.save();
+
+//     const product = await Product.findById(productID);
+//     product.images.push(image._id);
+//     await product.save();
+
+//     return image;
+//   } catch (error) {
+//     throw new Error('Image upload failed');
+//   }
+// },
+
+

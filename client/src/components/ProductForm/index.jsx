@@ -1,10 +1,10 @@
 import  {useState} from 'react'
 import { useMutation } from '@apollo/client';
-import {ADD_PRODUCT} from './mutations';
+import {ADD_PRODUCT} from '../../utils/mutations';
 
 const ProductForm =({profileId}) =>{
 
-    const [sellerProductInput, setsellerProductInput] =useState({
+    const [ProductInput, setProductInput] =useState({
         name: '',
         price: '',
         description: '',
@@ -14,18 +14,18 @@ const ProductForm =({profileId}) =>{
  // Handle changes in the form input fields
  const handleChange = (e) => {
     const { name, value } = e.target;
-    // Update the sellerProductInput state with the new values
-    setsellerProductInput({ ...sellerProductInput, [name]: value });
+    // Update the ProductInput state with the new values
+    setProductInput({ ...ProductInput, [name]: value });
   };
 
   const handleSubmit = (e) => {
  e.preventDefault();
   //call the addProduct mutation with the provided variable
   addProduct({
-    variables: { profileId, sellerProductInput },
+    variables: { profileId, ProductInput },
   });
   // Reset the form fields after submission
-  setsellerProductInput({
+  setProductInput({
     name: '',
     price: '',
     description: '',
@@ -40,7 +40,7 @@ return (
         type="text"
         name="name"
         placeholder="Product Name"
-        value={sellerProductInput.name}
+        value={ProductInput.name}
         onChange={handleChange}
       />
     </div>
@@ -49,7 +49,7 @@ return (
         type="number"
         name="price"
         placeholder="Price"
-        value={sellerProductInput.price}
+        value={ProductInput.price}
         onChange={handleChange}
       />
     </div>
@@ -58,7 +58,7 @@ return (
         type="text"
         name="description"
         placeholder="Description"
-        value={sellerProductInput.description}
+        value={ProductInput.description}
         onChange={handleChange}
       />
     </div>
@@ -67,7 +67,7 @@ return (
         type="text"
         name="imageUrl"
         placeholder="Image URL"
-        value={sellerProductInput.imageUrl}
+        value={ProductInput.imageUrl}
         onChange={handleChange}
       />
     </div>

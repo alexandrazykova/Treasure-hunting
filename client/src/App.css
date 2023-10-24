@@ -1182,6 +1182,11 @@ label form [type='radio'] {
   width: 92%;
 }
 
+footer {
+  background-color: ghostwhite;
+  padding: 1rem;
+}
+
 /* FLEX CONTENT */
 .flex-row {
   display: flex;
