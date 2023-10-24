@@ -50,7 +50,7 @@ const typeDefs = `
   }
 
   input SearchInput {
-    _id: ID
+    _id
     name: String
     description: String
   }
@@ -69,7 +69,7 @@ const typeDefs = `
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     saveProduct(productBody: SearchInput): User
-    removeProduct(productId: ID!): User
+    removeProduct(Id: ID!): User
     login(email: String!, password: String!): Auth
     addProduct(profileId: ID!, productInput: ProductInput): Product
   }

@@ -90,17 +90,16 @@ export const ADD_PRODUCT = gql`
 `;
 // using to remove product from the favourite list
 export const REMOVE_PRODUCT = gql`
-  mutation removeProduct($productId:ID!) {
-    removeProduct (productId:$productId){
+  mutation removeProduct($Id:ID!) {
+    removeProduct (Id:$Id){
       _id
       email
       productCount
       savedProducts {
-        productId
+        _id
         name
         description
         image
-        price
       }
     }
   }
