@@ -44,6 +44,13 @@ export const QUERY_USER = gql`
     user {
       firstName
       lastName
+      savedProducts {
+        name
+        description
+        image
+        price
+        category
+      }
       orders {
         _id
         purchaseDate
@@ -63,6 +70,21 @@ export const QUERY_CHECKOUT = gql`
   query getCheckout($products: [ProductInput]) {
     checkout(products: $products) {
       session
+    }
+  }
+`;
+export const QUERY_SINGLE_PROFILE = gql`
+  query singleProfile($profileId: ID!) {
+    profile(_id: $profileId) {
+      _id
+      name
+      products {
+        _id
+        name
+        price
+        description
+        imageUrl
+      }
     }
   }
 `;

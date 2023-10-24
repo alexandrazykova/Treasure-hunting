@@ -60,9 +60,9 @@ export const ADD_ORDER = gql`
     }
   }
 `;
-
+// using for saving product to the favourite list
 export const SAVE_PRODUCT = gql`
-  mutation saveProduct($productBody:ProductInput!) {
+  mutation saveProduct($productBody:ProductInput) {
     saveProduct (productBody:$productBody){
       _id
       email
@@ -78,3 +78,32 @@ export const SAVE_PRODUCT = gql`
     }
   }
 `;
+
+export const ADD_PRODUCT = gql`
+  mutation addProduct($profileId: ID!, $sellerProductInput: ProductInput) {
+    addProduct(profileId: $profileId, productInput: $sellerProductInput) {
+      _id
+      name
+      price
+      description
+      imageUrl
+    }
+  }
+`;
+// using to remove product from the favourite list
+export const REMOVE_PRODUCT = gql`
+  mutation removeProduct($Id:ID!) {
+    removeProduct (Id:$Id){
+      _id
+      email
+      productCount
+      savedProducts {
+        _id
+        name
+        description
+        image
+      }
+    }
+  }
+`;
+

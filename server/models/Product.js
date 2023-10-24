@@ -28,9 +28,14 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Comment',
     required: false
-  }
+  },
+
+  profile: {
+    type: Schema.Types.ObjectId,  // Use Schema.Types.ObjectId to reference Profile documents
+    ref: 'Profile',
+  },
 });
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports = Product;
+module.exports = { Product, productSchema}

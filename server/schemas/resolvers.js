@@ -1,13 +1,12 @@
-const { User, Product, Category, Order } = require('../models');
+const { User, Product, Category, Order, Profile } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc'); // You need to find out the Stripe key setup process for this project.
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
     categories: async () => {
       return await Category.find();
     },
-    // Resolver to search for products with filtering
     products: async (parent, { category, name }) => {
       const params = {};
 
@@ -22,16 +21,10 @@ const resolvers = {
       }
       return await Product.find(params).populate('category');
     },
-    // Resolver to search for product with id
     product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+      return await Product.findById(_id).populate('category').populate('comment');
     },
-    users:async ()=>{
-      return await User.find();
-    },
-    
-    // Resolver to fetch user data with id
-    users: async (parent, args, context) => {
+    user: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'orders.products',
@@ -45,63 +38,71 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-  
-   // Resolvers to bring single order by _id with login
-    order: async (parent, { _id }, context) => {
+    order: {
+      resolve:async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'orders.products',
           populate: 'category',
         });
-
+  
         return user.orders.id(_id);
       }
-
+  
       throw new AuthenticationError('Not logged in');
     },
-    //Resolvers for checkout and payment
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
-
-    //   // Commented out the creation of the Order
-       await Order.create({ products: args.products.map(({ _id }) => _id) });
-      const line_items = [];
-
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`],
-            },
-            unit_amount: product.price * 100,
-          },
-        });
-      }
-    //   // Stripe session for payment
-       const session = await stripe.checkout.sessions.create({
-         payment_method_types: ['card'],
-         line_items,
-         mode: 'payment',
-         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-         cancel_url: `${url}/`,
-      });
-
-       return { session: session.id };
-     },
   },
-  // add a new user
-  Mutation: {
+  
+    getProfile: async (_, { _id }) => {
+      try {
+        const profile = await Profile.findById(_id);
+        return profile;
+      } catch (error) {
+        throw new Error('Could not fetch the profile: ' + error.message);
+      }
+    },
+  },
 
+  Mutation: {
+      checkout: {
+  resolve:async (parent, args, context) => {
+    const url = new URL(context.headers.referer).origin;
+
+    await Order.create({ products: args.products.map(({ _id }) => _id) });
+    const line_items = [];
+
+    for (const product of args.products) {
+      line_items.push({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: product.name,
+            description: product.description,
+            images: [`${url}/images/${product.image}`],
+          },
+          unit_amount: product.price * 100,
+        },
+      });
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items,
+      mode: 'payment',
+      success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${url}/`,
+    });
+
+    return { session: session.id };
+  },
+},
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
-    // add the order mutation
+  
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
         const order = new Order({ products });
@@ -113,8 +114,6 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-
-    // Resolver for updating user details - requires authentication
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
@@ -122,12 +121,6 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
-    // Commenting out the updateProduct quantity mutation
-    // updateProduct: async (parent, { _id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
-    //   return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
-    // },
-
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -146,6 +139,30 @@ const resolvers = {
       return { token, user };
     },
   },
+//   saveProduct: async (parent, { productBody }, context) => {
+//     if (context.user) {
+//         const updatedUser = await User.findOneAndUpdate(
+//             { _id: context.user._id },
+//             { $push: { savedProducts: productBody } },
+//             { new: true, runValidators: true }
+//         );
+
+//         return updatedUser;
+//     }
+//     throw AuthenticationError;
+// },
+// removeProduct: async (parent, { productId }, context) => {
+//   if (context.user) {
+//       const updatedUser = await User.findOneAndUpdate(
+//           { _id: context.user._id },
+//           { $pull: { savedProducts: { productId } } },
+//           { new: true }
+//       );
+
+  //     return updatedUser;
+  // }
+//   throw AuthenticationError;
+// }
 };
 
 module.exports = resolvers;
