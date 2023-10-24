@@ -18,6 +18,10 @@ function Nav() {
               Logout
             </a>
           </li>
+          <li className="mx-1">
+          <Link as={Link} to='/savedProducts'>Saved Products
+          </Link>
+          </li>
         </ul>
       );
     } else {
