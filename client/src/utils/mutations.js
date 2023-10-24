@@ -68,10 +68,12 @@ export const SAVE_PRODUCT = gql`
       email
       productCount
       savedProducts {
+        _id
         name
         description
         image
         price
+        category
       }
     }
   }

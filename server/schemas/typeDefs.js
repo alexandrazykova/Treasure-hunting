@@ -69,7 +69,7 @@ const typeDefs = `
     addOrder(products: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     saveProduct(productBody: SearchInput): User
-    removeProduct(Id: ID!): User
+    removeProduct(_Id: ID!): User
     login(email: String!, password: String!): Auth
     addProduct(profileId: ID!, productInput: ProductInput): Product
   }
