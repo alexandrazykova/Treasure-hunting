@@ -27,7 +27,7 @@ const productSchema = new Schema({
   comment: {
     type: Schema.Types.ObjectId,
     ref: 'Comment',
-    required: false
+    required: true
   }
 });
 
