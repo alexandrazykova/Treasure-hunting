@@ -12,6 +12,8 @@ import {
 } from '../utils/actions';
 import { QUERY_ONE_PRODUCT } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
+//import '../index.css';
+
 // import spinner from '../assets/spinner.gif';
 
 function Detail() {
@@ -22,12 +24,13 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_ONE_PRODUCT, {
     // pass URL parameter
-    variables: { id },});
+    variables: { id },
+  });
 
-    const { cart } = state;
+  const { cart } = state;
 
-    const currentProduct = data ? data.product : {};
-  
+  const currentProduct = data ? data.product : {};
+
 
   // const { products, cart } = state;
 
@@ -88,43 +91,48 @@ function Detail() {
     idbPromise('cart', 'delete', { ...currentProduct });
   };
   console.log("Current Product:", currentProduct);
-  
+
   if (loading) {
     return <div>Loading...</div>;
   }
-  
+
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <Link to="/">← Back to Products</Link>
+        <div className="container my-4">
+          <div class="row">
+    <div class="col-md-6">
+      <Link to="/" className="mt-4 d-block">← Back to Products</Link>
+              <img
+                src={`/images/${currentProduct.image}`}
+                alt={currentProduct.name}
+                className="w-100"
+              />
+            </div>
+            <div class="col-md-6">
+      <h2>{currentProduct.name}</h2>
+      <p className="mb-3">{currentProduct.description}</p>
+      <p className="mb-2">
+        <strong>Price:</strong> <span className="h3">${currentProduct.price}</span>
+      </p>
+      <button className="btn btn-primary me-2" onClick={addToCart}>Add to Cart</button>
+      <button
+        className="btn btn-danger"
+        disabled={!cart.find((p) => p._id === currentProduct._id)}
+        onClick={removeFromCart}
+      >
+        Remove from Cart
+      </button>
+    </div>
+          </div>
 
-          <h2>{currentProduct.name}</h2>
+          <div className="row my-5">
+            <div className="col-12">
+              <h2>Comments</h2>
+              <list>{currentProduct.comment.comment_text}</list>
+            </div>
+          </div>
 
-          <p>{currentProduct.description}</p>
-
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
-              disabled={!cart.find((p) => p._id === currentProduct._id)}
-              onClick={removeFromCart}
-            >
-              Remove from Cart
-            </button>
-          </p>
-
-          <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
-          />
-
-      <div className="my-5">
-      <h2>Comments</h2>
-      <list>{currentProduct.comment.comment_text}</list>
-      </div>
-
-          
 
         </div>
       ) : null}
