@@ -51,7 +51,7 @@ function Nav() {
         </Link>
       </h1>
 
-      <nav>
+      <nav className="flex-row">
         {showNavigation()}
       </nav>
     </header>
