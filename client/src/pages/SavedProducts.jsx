@@ -8,61 +8,61 @@ import {
 } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
 
-// import { REMOVE_BOOK } from '../utils/mutations';
-// import { GET_ME } from '../utils/queries';
-// import { removeBookId } from '../utils/localStorage';
+import { REMOVE_PRODUCT } from '../utils/mutations'
+import { GET_USER } from '../utils/queries';
+import { removeProductId } from '../utils/localStorage';
 
 const SavedProducts = () => {
   const [setUserData] = useState({});
-  const { loading, data } = useQuery();
-  const [removeBook] = useMutation();
+  const { loading, data } = useQuery(GET_USER);
+  const [removeProduct] = useMutation(REMOVE_PRODUCT);
   console.log(data)
 
-//  const handleDeleteBook = async (bookId) => {
-//   try {
-//     const { data: updatedUser } = await removeBook({
-//       variables: { bookId }
-//     });
+ const handleDeleteProduct= async (productId) => {
+  try {
+    const { data: updatedUser } = await removeProduct({
+      variables: { productId }
+    });
 
-//     setUserData(updatedUser);
+    setUserData(updatedUser);
 
-//     removeBookId(bookId);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
+    removeProductId(productId);
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 //   // if data isn't here yet, say so
-//   if (loading) {
-//     return <h2>LOADING...</h2>;
-//   }
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
 
   return (
     <>
       <div fluid className="text-light bg-dark p-5">
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>Saved products:</h1>
         </Container>
       </div>
       <Container>
         <h2 className='pt-5'>
-          {data.me.savedBooks.length
-            ? `Viewing ${data.me.savedBooks.length} saved ${data.me.savedBooks.length === 1 ? 'book' : 'books'}:`
-            : 'You have no saved books!'}
+          {data.user.savedProducts.length
+            ? `Viewing ${data.user.savedProducts.length} saved ${data.user.savedProducts.length === 1 ? 'product' : 'products'}:`
+            : 'You have no saved products!'}
         </h2>
         <Row>
-          {data.me.savedBooks.map((book) => {
+          {data.user.savedProducts.map((product) => {
             return (
              
               <Col md="4">
-                <Card key={book.bookId} border='dark'>
-                  {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
+                <Card key={product.productId} border='dark'>
+                  {product.image ? <Card.Img src={product.image} alt={`The photo for ${product.name}`} variant='top' /> : null}
                   <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                    <p className='small'>Authors: {book.authors}</p>
-                    <Card.Text>{book.description}</Card.Text>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
-                      Delete this Book!
+                    <Card.Title>{product.name}</Card.Title>
+                    <p className='small'>{product.category}</p>
+                    <Card.Text>{product.description}</Card.Text>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteProduct(product.productId)}>
+                      Delete this product!
                     </Button>
                   </Card.Body>
                 </Card>

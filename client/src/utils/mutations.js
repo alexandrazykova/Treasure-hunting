@@ -62,18 +62,16 @@ export const ADD_ORDER = gql`
 `;
 // using for saving product to the favourite list
 export const SAVE_PRODUCT = gql`
-  mutation saveProduct($productBody:SearchInput) {
+  mutation saveProduct($productBody:ProductInput) {
     saveProduct (productBody:$productBody){
       _id
       email
       productCount
       savedProducts {
-        _id
         name
         description
         image
         price
-        category
       }
     }
   }
@@ -103,7 +101,6 @@ export const REMOVE_PRODUCT = gql`
         description
         image
         price
-        category
       }
     }
   }
