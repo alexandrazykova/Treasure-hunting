@@ -1739,3 +1739,23 @@ button {
 input {
   height: 30px;
 }
+
+.btn {
+  background-color: #e7e3fc!important;
+  color: #500202!important;
+}
+
+.btn:hover {
+  background-color: #fad3d3!important;
+  transition: transform 0.4s ease;
+}
+
+.btn:active {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+  background-color: #f4c6a1!important;
+}
+
+.mycontainer {
+  background-color: #f6feff;
+}
