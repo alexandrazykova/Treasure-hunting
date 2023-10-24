@@ -1,23 +1,41 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-
-import Auth from '../utils/auth';
-import { saveProductIds, getSavedProductIds } from '../utils/localStorage';
-
-import { useMutation } from '@apollo/client';
-import { SAVE_PRODUCT } from '../utils/mutations';
 
 const SearchProducts = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
-    const [searchedProducts, setSearchedProducts] = useState([]);
-    const [searchInput, setSearchInput] = useState('');
-  
-    // create state to hold saved ItemId values
-    const [savedProductIds, setSavedProductIds] = useState(getSavedProductIds());
-  
-    const [saveProduct] = useMutation(SAVE_PRODUCT);
-}
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
 
-return ();
+  const handleSearch = (searchQuery) => {
+    fetch(`/products/search?q=${searchQuery}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setSearchResults(data);
+      });
+  };
+
+  return (
+    <div>
+      <h2>Search for a Product</h2>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={handleInputChange}
+        placeholder="Enter product name"
+      />
+      <button onClick={handleSearch}>Search</button>
+      <div>
+        {searchResults.map((product) => (
+          <div key={product._id}>
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default SearchProducts;
