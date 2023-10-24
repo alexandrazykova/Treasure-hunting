@@ -80,8 +80,8 @@ export const SAVE_PRODUCT = gql`
 `;
 
 export const ADD_PRODUCT = gql`
-  mutation addProduct($profileId: ID!, $sellerProductInput: ProductInput) {
-    addProduct(profileId: $profileId, productInput: $sellerProductInput) {
+  mutation addProduct($profileId: ID!, $ProductInput: ProductInput) {
+    addProduct(profileId: $profileId, productInput: $ProductInput) {
       _id
       name
       price

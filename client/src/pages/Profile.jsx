@@ -2,7 +2,7 @@
  import { useQuery } from '@apollo/client';
 
  import { QUERY_SINGLE_PROFILE } from '../utils/queries'; //need to confirm the path
- import ProductForm from './ProductForm';
+ import ProductForm from '../components/ProductForm';
  const Profile = () => {
   const { profileId } = useParams();
 
