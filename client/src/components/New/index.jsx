@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const New = () => {
   const [imageFilenames, setImageFilenames] = useState([
-    "bear.png", "blanket.jpg", "dress.png", "skirt.png", "vase.png"
+"craft.png", "wood.png", "whale.jpeg", "basket.png", "sun.png"
   ]);
 
   const shuffleArray = (array) => {
@@ -20,7 +20,7 @@ const New = () => {
 
   useEffect(() => {
     populateLatestFinds();
-    const intervalId = setInterval(populateLatestFinds, 2000);
+    const intervalId = setInterval(populateLatestFinds, 4000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -29,18 +29,18 @@ const New = () => {
 <div className="container mt-5">
   <h2>Latest Finds</h2>
   <div id="latest-finds-carousel" className="carousel slide" data-ride="carousel">
-    <div className="carousel-inner">
+    <div className="carousel-inner row">
       <div className="carousel-item active d-flex justify-content-center">
-        <img src={`/images/${imageFilenames[0]}`} alt={`Latest Find 0`} className="img-fluid" style={{ maxHeight: '150px' }} />
+        <img src={`/images/${imageFilenames[0]}`} alt={`Latest Find 0`} className="img-fluid m-2" style={{ maxHeight: '120px' }} />
       </div>
       <div className="carousel-item d-flex justify-content-center">
-        <img src={`/images/${imageFilenames[1]}`} alt={`Latest Find 1`} className="img-fluid" style={{ maxHeight: '150px' }} />
+        <img src={`/images/${imageFilenames[1]}`} alt={`Latest Find 1`} className="img-fluid m-2" style={{ maxHeight: '120px' }} />
       </div>
       <div className="carousel-item d-flex justify-content-center">
-        <img src={`/images/${imageFilenames[2]}`} alt={`Latest Find 2`} className="img-fluid" style={{ maxHeight: '150px' }} />
+        <img src={`/images/${imageFilenames[2]}`} alt={`Latest Find 2`} className="img-fluid m-2" style={{ maxHeight: '120px' }} />
       </div>
       <div className="carousel-item d-flex justify-content-center">
-        <img src={`/images/${imageFilenames[3]}`} alt={`Latest Find 3`} className="img-fluid" style={{ maxHeight: '150px' }} />
+        <img src={`/images/${imageFilenames[3]}`} alt={`Latest Find 3`} className="img-fluid m-2" style={{ maxHeight: '120px' }} />
       </div>
     </div>
   </div>
