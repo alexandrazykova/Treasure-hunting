@@ -41,8 +41,8 @@ function ProductItem(item) {
   return (
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
+        <img 
+          alt={name} style={{ maxHeight: '300px' }}
           src={`/images/${image}`}
         />
         <p>{name}</p>

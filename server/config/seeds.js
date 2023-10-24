@@ -98,7 +98,7 @@ db.once('open', async () => {
             description:
                 'Silver or gold. No customizing sorry',
             image: 'neckless.png',
-            category: categories[2]._id,
+            category: categories[1]._id,
             price: 30,
             comment: comments[2]._id
         },
@@ -134,7 +134,7 @@ db.once('open', async () => {
             description:
                 'Cute little sun to lighten up your room',
             image: 'sun.png',
-            category: categories[0]._id,
+            category: categories[3]._id,
             price: 10,
             comment: comments[0]._id
         },
