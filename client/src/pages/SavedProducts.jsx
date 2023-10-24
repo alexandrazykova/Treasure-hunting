@@ -9,12 +9,12 @@ import {
 import { useQuery, useMutation } from '@apollo/client';
 
 import { REMOVE_PRODUCT } from '../utils/mutations'
-import { GET_USER } from '../utils/queries';
+import { QUERY_USER } from '../utils/queries';
 import { removeProductId } from '../utils/localStorage';
 
 const SavedProducts = () => {
   const [setUserData] = useState({});
-  const { loading, data } = useQuery(GET_USER);
+  const { loading, data } = useQuery(QUERY_USER);
   const [removeProduct] = useMutation(REMOVE_PRODUCT);
   console.log(data)
 
@@ -44,7 +44,7 @@ const SavedProducts = () => {
           <h1>Saved products:</h1>
         </Container>
       </div>
-      <Container>
+      {/* <Container>
         <h2 className='pt-5'>
           {data.user.savedProducts.length
             ? `Viewing ${data.user.savedProducts.length} saved ${data.user.savedProducts.length === 1 ? 'product' : 'products'}:`
@@ -71,7 +71,7 @@ const SavedProducts = () => {
             );
           })}
         </Row>
-      </Container>
+      </Container> */}
     </>
   );
 };
