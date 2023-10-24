@@ -198,6 +198,38 @@ input:focus {
   width: 25%;
   text-align: center;
 }
+/* footer.css */
+
+/* Style for the entire footer */
+footer {
+  background-color: black;
+  padding: 1rem;
+}
+
+/* Style for the footer links and text */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Style for individual footer elements */
+.footer-links > span {
+  margin: 0 10px;
+}
+
+/* Style for the "Sell with Us" link */
+.footer-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.btn-dark:hover {
+  background-color: #000;
+}
 
 .error-text {
   color: var(--error);

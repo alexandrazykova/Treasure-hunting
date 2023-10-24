@@ -14,7 +14,15 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>&copy; {new Date().getFullYear()} - Treasure Hunters </h4>
+        <div className="footer-links">
+        <a href="/Signup">Sell with Us</a>
+          <span className="spacer">|</span>
+          <span>📞 Customer Service: +123-456-7890</span>
+          <span className="spacer">|</span>
+          <a href="/OrderHistory">Order Status</a>
+        </div>
+     
+        <span>&copy; {new Date().getFullYear()} - Treasure Hunters</span>
       </div>
     </footer>
   );
