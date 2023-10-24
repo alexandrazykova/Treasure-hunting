@@ -11,9 +11,26 @@ export const QUERY_PRODUCTS = gql`
       category {
         _id
       }
-    }
+    } 
   }
 `;
+
+export const QUERY_ONE_PRODUCT = gql`
+query Product($id: ID!) {
+  product(_id: $id) {
+    comment {
+      _id
+      comment_text
+    }
+    description
+    image
+    name
+    price
+    _id
+  }
+}
+`;
+
 
 export const QUERY_ALL_PRODUCTS = gql`
   {
@@ -35,6 +52,15 @@ export const QUERY_CATEGORIES = gql`
     categories {
       _id
       name
+    }
+  }
+`;
+
+export const QUERY_COMMENTS = gql`
+  {
+    comments {
+      _id
+      comment_text
     }
   }
 `;
