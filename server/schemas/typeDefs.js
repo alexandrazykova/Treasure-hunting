@@ -5,6 +5,11 @@ const typeDefs = `
     name: String
   }
 
+  type Comment {
+    _id: ID
+    comment_text: String
+  } 
+
   type Product {
     _id: ID
     name: String
@@ -12,6 +17,7 @@ const typeDefs = `
     image: String
     price: Float
     category: Category
+    comment: Comment
   }
   type Profile {
     user(_id: ID!): User

@@ -10,7 +10,7 @@ import {
   ADD_TO_CART,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_ONE_PRODUCT } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 // import spinner from '../assets/spinner.gif';
 
@@ -18,38 +18,45 @@ function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({});
+  //const [currentProduct, setCurrentProduct] = useState({});
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_ONE_PRODUCT, {
+    // pass URL parameter
+    variables: { id },});
 
-  const { products, cart } = state;
+    const { cart } = state;
 
-  useEffect(() => {
-    // already in global store
-    if (products.length) {
-      setCurrentProduct(products.find((product) => product._id === id));
-    }
-    // retrieved from server
-    else if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
+    const currentProduct = data ? data.product : {};
+  
 
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
-      });
-    }
-    // get cache from idb
-    else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: indexedProducts,
-        });
-      });
-    }
-  }, [products, data, loading, dispatch, id]);
+  // const { products, cart } = state;
+
+  // useEffect(() => {
+  //   // already in global store
+  //   if (products.length) {
+  //     setCurrentProduct(products.find((product) => product._id === id));
+  //   }
+  //   // retrieved from server
+  //   else if (data) {
+  //     dispatch({
+  //       type: UPDATE_PRODUCTS,
+  //       products: data.products,
+  //     });
+
+  //     data.products.forEach((product) => {
+  //       idbPromise('products', 'put', product);
+  //     });
+  //   }
+  //   // get cache from idb
+  //   else if (!loading) {
+  //     idbPromise('products', 'get').then((indexedProducts) => {
+  //       dispatch({
+  //         type: UPDATE_PRODUCTS,
+  //         products: indexedProducts,
+  //       });
+  //     });
+  //   }
+  // }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -80,7 +87,12 @@ function Detail() {
 
     idbPromise('cart', 'delete', { ...currentProduct });
   };
-
+  console.log("Current Product:", currentProduct);
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
   return (
     <>
       {currentProduct && cart ? (
@@ -106,6 +118,14 @@ function Detail() {
             src={`/images/${currentProduct.image}`}
             alt={currentProduct.name}
           />
+
+      <div className="my-5">
+      <h2>Comments</h2>
+      <list>{currentProduct.comment.comment_text}</list>
+      </div>
+
+          
+
         </div>
       ) : null}
       {/* {loading ? <img src={spinner} alt="loading" /> : null} */}
