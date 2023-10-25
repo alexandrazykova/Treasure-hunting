@@ -28,8 +28,8 @@ const New = () => {
   return (
 <div className="container mt-5">
   <h2>Latest Finds</h2>
-  <div id="latest-finds-carousel" className="carousel slide" data-ride="carousel">
-    <div className="carousel-inner row">
+  <div id="latest-finds-carousel" className="carousel slide d-flex align-items-center" data-ride="carousel">
+    <div className="carousel-inner d-flex space-around row">
       <div className="carousel-item active d-flex justify-content-center">
         <img src={`/images/${imageFilenames[0]}`} alt={`Latest Find 0`} className="img-fluid m-2" style={{ maxHeight: '120px' }} />
       </div>

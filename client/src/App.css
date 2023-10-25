@@ -1088,8 +1088,9 @@ a:hover {
 }
 
 .card {
-  border: 1px solid #1a1a1a;
-  margin-bottom: 1rem;
+  border: 0.5px solid #f69797;
+  margin: 0.5rem;
+ 
 }
 
 .card .card-header {
@@ -1738,4 +1739,39 @@ button {
 
 input {
   height: 30px;
+  background-color: #f7eff7;
+}
+
+.btn {
+  background-color: #e7e3fc!important;
+  color: #500202!important;
+}
+
+.btn:hover {
+  background-color: #fad3d3!important;
+  transition: transform 0.4s ease;
+}
+
+.btn:active {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+  background-color: #f4c6a1!important;
+}
+
+.mycontainer {
+  background-color: #f6feff;
+}
+
+p {
+color: #500202;
+}
+
+img:hover {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+  text-decoration: none !important;
+}
+
+.row {
+  text-align: center !important;
 }
