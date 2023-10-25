@@ -25,7 +25,10 @@ function Nav() {
           <Link as={Link} to='/savedProducts'>Favorite Products
           </Link>
           </li>
-          
+          <li className="mx-1">
+          <Link className="text-danger"as={Link} to='/'>Sale
+          </Link>
+          </li>
         </ul>
       );
     } else {

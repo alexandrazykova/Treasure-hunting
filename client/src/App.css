@@ -412,7 +412,7 @@ dl {
   margin-bottom: 1rem;
   text-decoration: none;
   list-style-type: none;
-
+  margin-left: 2rem;
 }
 
 label {
@@ -988,7 +988,7 @@ a:hover {
   outline: none;
   color: #1a1a1a;
   background-color: #aeaeae;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, 
 }
 
 .btn:hover {
@@ -1090,7 +1090,6 @@ a:hover {
 .card {
   border: 0.5px solid #f69797;
   margin: 0.5rem;
- 
 }
 
 .card .card-header {
@@ -1735,6 +1734,8 @@ button {
   background-color: #efe3f5;
   border-color: #e1b4f4;
   margin: 5px;
+  border-radius: 10%;
+  color: #5a0b0b;
 }
 
 input {
@@ -1774,4 +1775,20 @@ img:hover {
 
 .row {
   text-align: center !important;
+  justify-content: space-around;
+}
+
+.customlist {
+  display: flex;
+  justify-content: space-between !important;
+}
+
+button:hover {
+  background-color: #f0d3d3;
+  transition: color 0.2s ease-in-out;
+  transform: scale(1.1);
+}
+
+span {
+  color: #500202;
 }
