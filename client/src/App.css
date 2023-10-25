@@ -425,6 +425,7 @@ dl {
 label {
   display: inline-block;
   padding: 2px;
+  color: #5a0b0b;
 }
 
 input,
@@ -432,6 +433,7 @@ select,
 textarea,
 button {
   margin: 0;
+  color: #7b3806;
 }
 
 a {
@@ -1202,7 +1204,7 @@ label form [type='radio'] {
 
 
  footer {
-  background-color:rgb(248, 229, 241);
+  background-color:rgb(252, 238, 228);
   padding:1rem;
  }
 /* FLEX CONTENT */
@@ -1735,7 +1737,7 @@ label form [type='radio'] {
 }
 
 header {
-  background-color: #f2d8c9;
+  background-color: #f6dfd2;
 }
 
 header a:hover {

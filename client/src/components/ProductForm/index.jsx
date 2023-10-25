@@ -75,7 +75,7 @@ const ProductForm = ({ profileId }) => {
           style={inputStyle}
         />
       </div>
-      <button type="submit" style={submitButtonStyle}>
+      <button className="btn" type="submit" style={submitButtonStyle}>
         Add Product
       </button>
     </form>
@@ -104,8 +104,8 @@ const inputStyle = {
 };
 
 const submitButtonStyle = {
-  backgroundColor: '#0074d9',
-  color: '#fff',
+  backgroundColor: '#e4d5f7',
+  color: '#500202',
   padding: '10px 15px',
   border: 'none',
   borderRadius: '3px',
