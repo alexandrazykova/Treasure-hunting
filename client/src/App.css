@@ -1802,3 +1802,8 @@ button:hover {
 span {
   color: #500202;
 }
+
+#error-page {
+text-align: center;
+margin-top: 80px;
+}
