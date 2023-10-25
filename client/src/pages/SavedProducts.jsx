@@ -41,7 +41,7 @@ const SavedProducts = () => {
     <>
       <div fluid className="text-light bg-dark p-5">
         <Container>
-          <h1>Saved products:</h1>
+          <h1>Favorite products:</h1>
         </Container>
       </div>
       {/* <Container>

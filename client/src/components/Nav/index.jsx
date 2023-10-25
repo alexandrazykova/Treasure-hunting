@@ -22,7 +22,7 @@ function Nav() {
             </a>
           </li>
           <li className="mx-1">
-          <Link as={Link} to='/savedProducts'>Saved Products
+          <Link as={Link} to='/savedProducts'>Favorite Products
           </Link>
           </li>
           
