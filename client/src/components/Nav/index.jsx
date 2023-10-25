@@ -13,7 +13,7 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/addProduct">Add Product</Link>  {/* Add Product link for signed-in users */}
+            <Link to="/addProduct">Sell on Treasure Hunt</Link>  {/* Add Product link for signed-in users */}
           </li>
           <li className="mx-1">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}

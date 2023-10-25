@@ -17,7 +17,7 @@
   }
   return (
     <div>
-      <h2>{profile.name} Products</h2>
+     <h2 style={{ textAlign: 'center' }}>{profile.name} Reach Millions of buyers!!</h2>
       {profile.products?.length > 0 && (
         <div>
           {profile.products.map((product) => (
