@@ -424,6 +424,7 @@ dl {
 
 label {
   display: inline-block;
+  padding: 2px;
 }
 
 input,
@@ -1748,6 +1749,8 @@ button {
 input {
   height: 30px;
   background-color: #f7eff7;
+  border-radius: 5%;
+  margin-left: 5px;
 }
 
 .btn {
