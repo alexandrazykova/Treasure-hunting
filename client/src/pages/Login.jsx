@@ -34,11 +34,11 @@ const Login = (props) => {
     <div className="container my-1">
       <Link to="/signup">← Go to Signup</Link>
 
-      <h2>Login</h2>
+      <h2 className="mt-4">Login</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email address:</label>
-          <input
+          <input className="mt-1"
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -48,7 +48,7 @@ const Login = (props) => {
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="pwd">Password:</label>
-          <input
+          <input className="mt-1"
             placeholder="******"
             name="password"
             type="password"

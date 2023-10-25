@@ -115,14 +115,15 @@ function Detail() {
       <p className="mb-2">
         <strong>Price:</strong> <span className="h3">${currentProduct.price}</span>
       </p>
-      <button className="btn btn-primary me-2" onClick={addToCart}>Add to Cart</button>
+      <button className="btn btn-primary me-2 m-1" onClick={addToCart}>Add to Cart</button>
       <button
-        className="btn btn-danger"
+        className="btn btn-danger m-1"
         disabled={!cart.find((p) => p._id === currentProduct._id)}
         onClick={removeFromCart}
       >
         Remove from Cart
       </button>
+      <button className='btn m-1 '>Favorite ⭐ </button>
     </div>
           </div>
 

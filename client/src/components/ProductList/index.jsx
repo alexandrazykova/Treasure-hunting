@@ -45,11 +45,11 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Our Products:</h2>
+      <h2 className="text-center">Our Products:</h2>
       {state.products.length ? (
-        <div className="flex-row">
+       <div className="row justify-content-center mylist p-2">
           {filterProducts().map((product) => (
-            <ProductItem
+            <ProductItem className="customlist"
               key={product._id}
               _id={product._id}
               image={product.image}
@@ -59,6 +59,7 @@ function ProductList() {
             />
           ))}
         </div>
+
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}

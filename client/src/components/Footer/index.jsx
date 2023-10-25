@@ -5,7 +5,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="w-100 mt-auto text-dark p-4">
-      <div className="container text-center mb-5">
+      <div className="container text-center">
         {location.pathname !== '/' && (
           <button
             className="btn btn-dark mb-3"
@@ -16,9 +16,9 @@ const Footer = () => {
         )}
         <div className="footer-links">
         <a href="/Signup">Sell with Us</a>
-          <span className="spacer">|</span>
+          <span className="spacer"> | </span>
           <span>📞 Customer Service: +123-456-7890</span>
-          <span className="spacer">|</span>
+          <span className="spacer"> | </span>
           <a href="/OrderHistory">Order Status</a>
         </div>
      

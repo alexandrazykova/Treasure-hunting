@@ -42,23 +42,32 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
-      <h2>Choose a Category:</h2>
-      {categories.map((item) => (
-        <button
-          key={item._id}
-          onClick={() => {
-            handleClick(item._id);
-          }}
-        >
-          {item.name}
-        </button>
-      ))}
-      <button onClick={() => { handleClick('') }}>
+    <div className="text-center" id="mycategory">
+      <h2>Hunt by Category:</h2>
+      <div className="d-flex justify-content-center">
+        {categories.map((item) => (
+          <button
+            key={item._id}
+            onClick={() => {
+              handleClick(item._id);
+            }}
+            className="btn m-1"
+          >
+            {item.name}
+          </button>
+        ))}
+      
+      <button
+        onClick={() => {
+          handleClick('');
+        }}
+        className="btn m-1"
+      >
         All
       </button>
+      </div>
     </div>
   );
-}
+};
 
 export default CategoryMenu;

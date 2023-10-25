@@ -40,7 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <StoreProvider>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="flex-column mycontainer justify-flex-start min-100-vh">
         <Nav />
         <div className="container">
           <Outlet />
