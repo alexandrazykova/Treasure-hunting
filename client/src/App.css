@@ -1180,13 +1180,23 @@ label form [type='radio'] {
 
 .container.container-fluid {
   width: 92%;
+} 
+.container {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-footer {
-  background-color: ghostwhite;
-  padding: 1rem;
+.container-fluid {
+  width: 92%;
 }
 
+
+ footer {
+  background-color:ghostwhite;
+  padding:1rem;
+ }
 /* FLEX CONTENT */
 .flex-row {
   display: flex;
