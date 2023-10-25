@@ -42,8 +42,8 @@ function CategoryMenu() {
   };
 
   return (
-    <div className="text-center">
-      <h2>Choose a Category:</h2>
+    <div className="text-center" id="mycategory">
+      <h2>Hunt by Category:</h2>
       <div className="d-flex justify-content-center">
         {categories.map((item) => (
           <button
