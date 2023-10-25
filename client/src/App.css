@@ -19,6 +19,13 @@
  */
 body {
   margin: 0;
+  background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v546batch3-mynt-34-badgewatercolor_1.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=f04d2786c16b18e1ee49ca8128b65221') !important;
+  background-size: cover; /* Cover the entire viewport */
+    background-position: center; /* Center the background image */
+    background-attachment: fixed; /* Fix the background image in place */
+
+    /* Create a dimming overlay using a pseudo-element */
+    position: relative;
 }
 
 /**
@@ -372,7 +379,7 @@ h6 {
   font-family: 'JetBrains Mono', monospace;
   margin: 0 0 0.5rem;
   line-height: 1.25;
-  color: #5f0685;
+  color: #870a47;
 }
 
 h1 {
@@ -427,12 +434,12 @@ button {
 }
 
 a {
-  color: #631bbc;
+  color: #b43a5f;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
+  color: #6a0a6a;
   text-decoration: underline;
 }
 
@@ -979,7 +986,7 @@ a:hover {
 .btn {
   text-align: center;
   display: inline-block;
-  padding: 0.5rem 1.2rem;
+  padding: 0.5rem 1.7rem;
   margin: 0;
   text-decoration: none;
   font-size: 1rem;
@@ -1183,7 +1190,7 @@ label form [type='radio'] {
 }
 
 footer {
-  background-color: ghostwhite;
+  background-color: rgb(248, 229, 241);
   padding: 1rem;
 }
 
@@ -1717,7 +1724,7 @@ footer {
 }
 
 header {
-  background-color: #ebf2f9;
+  background-color: #f2d8c9;
 }
 
 header a:hover {
@@ -1744,7 +1751,7 @@ input {
 }
 
 .btn {
-  background-color: #e7e3fc!important;
+  background-color: #e4d5f7!important;
   color: #500202!important;
 }
 
@@ -1760,7 +1767,7 @@ input {
 }
 
 .mycontainer {
-  background-color: #f6feff;
+  
 }
 
 p {
